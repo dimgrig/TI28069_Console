@@ -6,7 +6,7 @@
 			<AppType>Application</AppType>
 			<MainSource>TI28069_Console.cpp</MainSource>
 			<Base>True</Base>
-			<Config Condition="'$(Config)'==''">Release</Config>
+			<Config Condition="'$(Config)'==''">Debug</Config>
 			<Platform Condition="'$(Platform)'==''">Win32</Platform>
 			<TargetedPlatforms>1</TargetedPlatforms>
 			<Platform>Win32</Platform>
@@ -39,10 +39,10 @@
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<PackageImports>vclimg.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;Rave90VCL.bpi;bdertl.bpi;rtl.bpi;bcbie.bpi;xmlrtl.bpi;vclactnband.bpi;bcbsmp.bpi;VclSmp.bpi;svnui.bpi;svn.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vcldb.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;vclib.bpi;ibxpress.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;intrawebdb_110_150.bpi;Intraweb_110_150.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdb.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;vclribbon.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DataSnapIndy10ServerTransport.bpi;DataSnapProviderClient.bpi;DataSnapClient.bpi;dbxcds.bpi;DbxClientDriver.bpi;DataSnapServer.bpi;AzureCloud.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;DBXFirebirdDriver.bpi;DBXSybaseASEDriver.bpi;DBXSybaseASADriver.bpi;DBXOracleDriver.bpi;DBXMSSQLDriver.bpi;DBXInformixDriver.bpi;DBXDb2Driver.bpi;CodeSiteExpressVcl.bpi</PackageImports>
 			<OutputExt>exe</OutputExt>
-			<LinkPackageStatics>rtl.lib;vcl.lib;vclimg.lib</LinkPackageStatics>
+			<LinkPackageStatics>rtl.lib;vcl.lib;vclimg.lib;Tee.lib</LinkPackageStatics>
 			<Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
 			<ProjectType>CppVCLApplication</ProjectType>
-			<AllPackageLibs>rtl.lib;vcl.lib;vclimg.lib</AllPackageLibs>
+			<AllPackageLibs>rtl.lib;vcl.lib;vclimg.lib;Tee.lib</AllPackageLibs>
 			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<Multithreaded>true</Multithreaded>
@@ -89,6 +89,10 @@
 			<DynamicRTL>false</DynamicRTL>
 		</PropertyGroup>
 		<ItemGroup>
+			<CppCompile Include="MChart.cpp">
+				<DependentOn>MChart.h</DependentOn>
+				<BuildOrder>5</BuildOrder>
+			</CppCompile>
 			<CppCompile Include="TI28069_Console.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
@@ -562,6 +566,7 @@
 					<Platform value="Win64">False</Platform>
 					<Platform value="Win32">True</Platform>
 				</Platforms>
+				<ModelSupport>False</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>

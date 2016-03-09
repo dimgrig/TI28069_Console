@@ -7,6 +7,10 @@
 #include "UConstants.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "Chart"
+#pragma link "Series"
+#pragma link "TeEngine"
+#pragma link "TeeProcs"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -1098,6 +1102,50 @@ void __fastcall TMainForm::BSAVEClick(TObject *Sender)
   this->aPeriphery.aRSMaster.RSSend(sendpaket);
 
   this->AddToLogMemo("Отправлен запрос SAVE");
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::BChartClearClick(TObject *Sender)
+{
+	for (int i = 0; i < MainForm->Chart->SeriesCount(); i++)
+	{
+		MainForm->Chart->Series[i]->Clear();
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::Timer2Timer(TObject *Sender)
+{
+  mytime++;
+
+  this->ESpeedRef_krpm->Text = IntToStr(rand() % 100);
+  this->ESpeed_krpm->Text = IntToStr(rand() % 100  + 500);
+
+  if(this->cbEnableChart->Checked == true)
+  {
+	this->aChart.Run();
+  }
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMainForm::EPeriod2_msChange(TObject *Sender)
+{
+  if(EPeriod2_ms->Text == "") EPeriod2_ms->Text = IntToStr(this->UDPeriod2_ms->Min);
+
+  if(StrToInt(EPeriod2_ms->Text) > this->UDPeriod2_ms->Max)
+  {
+	EPeriod2_ms->Text = IntToStr(this->UDPeriod2_ms->Max);
+  }
+
+  if(StrToInt(EPeriod2_ms->Text) < this->UDPeriod2_ms->Min)
+  {
+	EPeriod2_ms->Text = IntToStr(this->UDPeriod2_ms->Min);
+  }
+
+
+  this->Timer2->Interval = (StrToInt(this->EPeriod2_ms->Text));
 }
 //---------------------------------------------------------------------------
 

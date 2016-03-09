@@ -9,10 +9,16 @@
 #include <Forms.hpp>
 
 #include "UPeriphery.h"
+#include "MChart.h"
 #include <ExtCtrls.hpp>
 #include <ComCtrls.hpp>
 //#include <pngimage.hpp>
 #include <Graphics.hpp>
+#include "Chart.hpp"
+#include "Series.hpp"
+#include "TeEngine.hpp"
+#include "TeeProcs.hpp"
+
 
 //extern "C" {
 //#include "IQmathLib.h"
@@ -134,6 +140,17 @@ __published:	// IDE-managed Components
 	TEdit *EPositionError_MRev;
 	TLabel *LPositionError_MRev;
 	TButton *BSAVE;
+	TChart *Chart;
+	TImage *i1;
+	TComboBox *cb1;
+	TButton *BChartClear;
+	TCheckBox *cbEnableChart;
+	TTimer *Timer2;
+	TImage *i2;
+	TComboBox *cb2;
+	TLabel *Label1;
+	TEdit *EPeriod2_ms;
+	TUpDown *UDPeriod2_ms;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall BStartClick(TObject *Sender);
 	void __fastcall BStopClick(TObject *Sender);
@@ -169,16 +186,22 @@ __published:	// IDE-managed Components
 	void __fastcall BESTOPClick(TObject *Sender);
 	void __fastcall Edest_posChange(TObject *Sender);
 	void __fastcall BSAVEClick(TObject *Sender);
+	void __fastcall BChartClearClick(TObject *Sender);
+	void __fastcall Timer2Timer(TObject *Sender);
+	void __fastcall EPeriod2_msChange(TObject *Sender);
 
 private:	// User declarations
 
 	Periphery aPeriphery;
 	void __fastcall UpdateComponents();
+	MChart aChart;
 
 
 public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
-    void __fastcall AddToLogMemo(String Text);
+	void __fastcall AddToLogMemo(String Text);
+
+	long mytime;
 
 	bool ExtendedMode;
 	unsigned long CS_Timer;

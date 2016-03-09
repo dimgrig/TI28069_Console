@@ -4,7 +4,7 @@ object MainForm: TMainForm
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'MainForm'
-  ClientHeight = 492
+  ClientHeight = 701
   ClientWidth = 1005
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,6 +16,9 @@ object MainForm: TMainForm
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
+  DesignSize = (
+    1005
+    701)
   PixelsPerInch = 96
   TextHeight = 23
   object LPeriod_ms: TLabel
@@ -31,11 +34,36 @@ object MainForm: TMainForm
     Font.Style = []
     ParentFont = False
   end
+  object i1: TImage
+    Left = 501
+    Top = 486
+    Width = 5
+    Height = 28
+  end
+  object i2: TImage
+    Left = 501
+    Top = 520
+    Width = 5
+    Height = 28
+  end
+  object Label1: TLabel
+    Left = 604
+    Top = 460
+    Width = 71
+    Height = 20
+    Caption = #1055#1077#1088#1080#1086#1076'_'#1084#1089
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Style = []
+    ParentFont = False
+  end
   object MLog: TMemo
     Left = 598
     Top = 327
     Width = 403
-    Height = 133
+    Height = 122
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -47,11 +75,12 @@ object MainForm: TMainForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 469
+    Top = 678
     Width = 1005
     Height = 23
     Panels = <>
     SimplePanel = True
+    ExplicitTop = 469
   end
   object GBParameters: TGroupBox
     Left = 8
@@ -1565,10 +1594,165 @@ object MainForm: TMainForm
     TabOrder = 11
     OnClick = BSAVEClick
   end
+  object Chart: TChart
+    Left = 8
+    Top = 462
+    Width = 487
+    Height = 210
+    AllowPanning = pmNone
+    Border.Visible = True
+    Legend.CheckBoxes = True
+    Legend.ColorWidth = 10
+    Legend.Symbol.Width = 10
+    Legend.TextStyle = ltsPlain
+    Legend.Visible = False
+    SubTitle.Visible = False
+    Title.Text.Strings = (
+      'TChart')
+    Title.Visible = False
+    BottomAxis.MinimumOffset = 1
+    BottomAxis.Title.Caption = 'ticks'
+    DepthAxis.Automatic = False
+    DepthAxis.AutomaticMaximum = False
+    DepthAxis.AutomaticMinimum = False
+    DepthAxis.Maximum = 0.500000000000000000
+    DepthAxis.Minimum = -0.500000000000000000
+    DepthTopAxis.Automatic = False
+    DepthTopAxis.AutomaticMaximum = False
+    DepthTopAxis.AutomaticMinimum = False
+    DepthTopAxis.Maximum = 0.500000000000000000
+    DepthTopAxis.Minimum = -0.500000000000000000
+    LeftAxis.MinimumOffset = 1
+    RightAxis.Automatic = False
+    RightAxis.AutomaticMaximum = False
+    RightAxis.Visible = False
+    TopAxis.Automatic = False
+    TopAxis.AutomaticMaximum = False
+    TopAxis.AutomaticMinimum = False
+    TopAxis.Visible = False
+    View3D = False
+    View3DOptions.Perspective = 0
+    View3DWalls = False
+    Zoom.Animated = True
+    Zoom.AnimatedSteps = 16
+    Zoom.Pen.Color = clSilver
+    BevelOuter = bvNone
+    Color = clWindow
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 12
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    PrintMargins = (
+      15
+      28
+      15
+      28)
+    ColorPaletteIndex = 13
+  end
+  object cb1: TComboBox
+    Left = 512
+    Top = 486
+    Width = 117
+    Height = 28
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Style = []
+    ItemIndex = 0
+    ParentFont = False
+    TabOrder = 13
+    Text = 'None'
+    Items.Strings = (
+      'None'
+      'SpeedRef_rpm'
+      'Speed_rpm')
+  end
+  object BChartClear: TButton
+    Left = 877
+    Top = 647
+    Width = 120
+    Height = 25
+    Caption = 'Clear'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 14
+    OnClick = BChartClearClick
+  end
+  object cbEnableChart: TCheckBox
+    Left = 501
+    Top = 463
+    Width = 97
+    Height = 17
+    Caption = 'Enable chart'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 15
+  end
+  object cb2: TComboBox
+    Left = 512
+    Top = 520
+    Width = 117
+    Height = 28
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Style = []
+    ItemIndex = 0
+    ParentFont = False
+    TabOrder = 16
+    Text = 'None'
+    Items.Strings = (
+      'None'
+      'SpeedRef_rpm'
+      'Speed_rpm')
+  end
+  object EPeriod2_ms: TEdit
+    Left = 690
+    Top = 455
+    Width = 50
+    Height = 28
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Style = []
+    NumbersOnly = True
+    ParentFont = False
+    TabOrder = 17
+    Text = '1000'
+    OnChange = EPeriod2_msChange
+  end
+  object UDPeriod2_ms: TUpDown
+    Left = 746
+    Top = 455
+    Width = 16
+    Height = 28
+    Associate = EPeriod2_ms
+    Min = 10
+    Max = 10000
+    Position = 1000
+    TabOrder = 18
+    Thousands = False
+  end
   object Timer: TTimer
     Interval = 1
     OnTimer = TimerTimer
     Left = 40
+    Top = 248
+  end
+  object Timer2: TTimer
+    OnTimer = Timer2Timer
+    Left = 80
     Top = 248
   end
 end
