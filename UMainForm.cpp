@@ -35,13 +35,13 @@ void __fastcall TMainForm::BStartClick(TObject *Sender)
   int speed;
   switch(StrToInt(this->CBCOMSpeed->Text))
   {
-      case(0):
+	  case(0):
       speed = 110;
       break;
       case(1):
       speed = 300;
       break;
-      case(2):
+	  case(2):
       speed = 600;
       break;
       case(3):
@@ -74,9 +74,9 @@ void __fastcall TMainForm::BStartClick(TObject *Sender)
       case(12):
       speed = 115200;
       break;
-      default:
+	  default:
       speed = 57600;
-      break;
+	  break;
   }
 	bool ret = this->aPeriphery.TurnOn(this->CBCOMNum->ItemIndex + 1,speed);
 
@@ -119,7 +119,7 @@ void __fastcall TMainForm::UpdateComponents()
 //того, работает консоль или нет
 
     if(this->aPeriphery.IsRunning() == true)
-    {
+	{
 	  this->BStart->Enabled = false;
 	  this->BStop->Enabled = true;
 	  this->StatusBar->SimpleText = "—осто€ние консоли: работает...";
@@ -127,7 +127,7 @@ void __fastcall TMainForm::UpdateComponents()
 	  this->CBCOMSpeed->Enabled = false;
 	}
 	else
-    {
+	{
       this->BStart->Enabled = true;
       this->BStop->Enabled = false;
 	  this->StatusBar->SimpleText = "—осто€ние консоли: остановлена";
@@ -1121,6 +1121,7 @@ void __fastcall TMainForm::Timer2Timer(TObject *Sender)
 
   this->ESpeedRef_krpm->Text = IntToStr(rand() % 100);
   this->ESpeed_krpm->Text = IntToStr(rand() % 100  + 500);
+  this->EMaxAccel_krpmps->Text = IntToStr(rand() % 100  + 1000);
 
   if(this->cbEnableChart->Checked == true)
   {
@@ -1147,5 +1148,8 @@ void __fastcall TMainForm::EPeriod2_msChange(TObject *Sender)
 
   this->Timer2->Interval = (StrToInt(this->EPeriod2_ms->Text));
 }
+//---------------------------------------------------------------------------
+
+
 //---------------------------------------------------------------------------
 
